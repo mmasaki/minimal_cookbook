@@ -55,6 +55,12 @@ package "vim"
 package "htop"
 package "sysv-rc-conf" if platform?("ubuntu")
 
+if platform_family?("debian")
+  package("libcurl-dev")
+elsif platform_family?("rhel")
+  package("libcurl-devel")
+end
+
 =begin
 # update
 case node[:platform_family]

@@ -4,7 +4,7 @@ maintainer_email 'masaki.matsushita@ntt.com'
 license          'All rights reserved'
 description      'Installs/Configures minimal_cookbook'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.13'
+version          '0.1.14'
 depends          'users'
 depends          'sudo'
 depends          'yum-epel'
