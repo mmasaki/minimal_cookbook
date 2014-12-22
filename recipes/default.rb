@@ -56,7 +56,7 @@ package "htop"
 package "sysv-rc-conf" if platform?("ubuntu")
 
 if platform_family?("debian")
-  package("libcurl-dev")
+  package("libcurl4-openssl-dev")
 elsif platform_family?("rhel")
   package("libcurl-devel")
 end
