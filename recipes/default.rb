@@ -38,6 +38,7 @@ package "nc" if platform_family?("rhel")
 package "vim"
 package "htop"
 package "sysv-rc-conf" if platform?("ubuntu")
+package "jq"
 
 if platform_family?("debian")
   package("libcurl4-openssl-dev")
