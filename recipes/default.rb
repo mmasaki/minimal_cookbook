@@ -45,15 +45,3 @@ if platform_family?("debian")
 elsif platform_family?("rhel")
   package("libcurl-devel")
 end
-
-=begin
-# update
-case node[:platform_family]
-when "rhel"
-  execute "yum update -y"
-when "debian"
-  execute "apt-get update && apt-get dist-upgrade -y"
-when "mac_os_x"
-  execute "brew update"
-end
-=end
