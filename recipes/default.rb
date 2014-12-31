@@ -1,5 +1,4 @@
 include_recipe "users::sysadmins"
-include_recipe "ubuntu"
 
 sudo "sysadmin" do
   group "sysadmin"
@@ -21,6 +20,7 @@ if platform?("ubuntu")
   end
 
   apt_package "language-pack-ja"
+  include_recipe "ubuntu"
   apt_package "lvm2"
 end
 
