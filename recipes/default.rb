@@ -38,15 +38,14 @@ if platform_family?("debian")
   apt_package "language-pack-ja"
 end
 
-link "/etc/localtime" do
-  to "/usr/share/zoneinfo/Japan"
-end
-
 package "zsh"
+
 include_recipe "yum-epel" if platform_family?("rhel")
 include_recipe "git"
 include_recipe "build-essential"
 include_recipe "openssl"
+include_recipe "timezone-ii"
+include_recipe "ntp"
 
 package "traceroute"
 package "tcptraceroute" if platform?("mac_os_x")
