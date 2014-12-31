@@ -21,6 +21,7 @@ if platform?("ubuntu")
   end
 
   apt_package "language-pack-ja"
+  apt_package "lvm2"
 end
 
 package "zsh"
