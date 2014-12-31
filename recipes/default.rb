@@ -1,4 +1,5 @@
 include_recipe "users::sysadmins"
+include_recipe "ubuntu"
 
 sudo "sysadmin" do
   group "sysadmin"
@@ -10,29 +11,13 @@ file "/etc/ssh/sshd_config" do
   _file.search_file_replace("#PasswordAuthentication yes", "PasswordAuthentication no")
   _file.search_file_replace("PermitRootLogin yes", "PermitRootLogin no")
   _file.search_file_replace("PermitRootLogin without-password", "PermitRootLogin no")
-  content _file.send(:editor).lines.join
+  _file.write_file
 end
 
-if platform_family?("debian")
-  if platform?("ubuntu")
-    sudo "ubuntu" do
-      user "ubuntu"
-      nopasswd true
-    end
-
-    file "/etc/apt/sources.list" do
-      _file = Chef::Util::FileEdit.new(path)
-      _file.search_file_replace("us.archive.ubuntu.com", "ftp.jaist.ac.jp")
-      _file.search_file_replace("jp.archive.ubuntu.com", "ftp.jaist.ac.jp")
-      _file.search_file_replace("archive.ubuntu.com", "ftp.jaist.ac.jp")
-      _file.search_file_replace("security.ubuntu.com", "ftp.jaist.ac.jp")
-      content _file.send(:editor).lines.join
-      notifies :run, 'execute[apt-get update]', :immediately
-    end
-
-    execute "apt-get update" do
-      action :nothing
-    end
+if platform?("ubuntu")
+  sudo "ubuntu" do
+    user "ubuntu"
+    nopasswd true
   end
 
   apt_package "language-pack-ja"
