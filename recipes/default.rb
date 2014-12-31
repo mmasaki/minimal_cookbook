@@ -38,6 +38,7 @@ package "tcptraceroute" if platform?("mac_os_x")
 package "nc" if platform_family?("rhel")
 package "vim"
 package "htop"
+package "iftop"
 package "sysv-rc-conf" if platform?("ubuntu")
 package "jq"
 
