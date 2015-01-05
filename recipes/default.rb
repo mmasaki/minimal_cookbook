@@ -14,7 +14,7 @@ file "/etc/ssh/sshd_config" do
 end
 
 if platform?("ubuntu")
-  apt_package "language-pack-ja" if node[:ubuntu][:locale] = "ja_JP.UTF-8"
+  apt_package "language-pack-ja" if node[:ubuntu][:locale] == "ja_JP.UTF-8"
   include_recipe "ubuntu"
   apt_package "lvm2"
 
