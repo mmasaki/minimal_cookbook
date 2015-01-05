@@ -14,14 +14,14 @@ file "/etc/ssh/sshd_config" do
 end
 
 if platform?("ubuntu")
+  apt_package "language-pack-ja" if node[:ubuntu][:locale] = "ja_JP.UTF-8"
+  include_recipe "ubuntu"
+  apt_package "lvm2"
+
   sudo "ubuntu" do
     user "ubuntu"
     nopasswd true
   end
-
-  apt_package "language-pack-ja"
-  include_recipe "ubuntu"
-  apt_package "lvm2"
 end
 
 package "zsh"
