@@ -35,7 +35,6 @@ include_recipe "ntp"
 
 package "traceroute"
 package "tcptraceroute" if platform?("mac_os_x")
-package "nc" if platform_family?("rhel")
 package "vim"
 package "htop"
 package "iotop"
@@ -43,8 +42,11 @@ package "iftop"
 package "sysv-rc-conf" if platform?("ubuntu")
 package "jq"
 
-if platform_family?("debian")
-  package("libcurl4-openssl-dev")
-elsif platform_family?("rhel")
-  package("libcurl-devel")
+case node[:platform_family]
+when "rhel"
+  yum_package "nc"
+  yum_package "libcurl-devel"
+when "debian"
+  apt_package "netcat-traditional"
+  apt_package "libcurl4-openssl-dev"
 end
