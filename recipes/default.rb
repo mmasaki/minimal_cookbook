@@ -19,6 +19,10 @@ if platform?("ubuntu")
   r = resources(template: "/etc/apt/sources.list")
   r.notifies(:install, "apt_package[language-pack-ja]", :immediately)
 
+  apt_package "language-pack-ja" do
+    action :nothing
+  end
+
   apt_package "lvm2"
 
   sudo "ubuntu" do
