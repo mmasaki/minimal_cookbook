@@ -16,7 +16,7 @@ end
 if platform?("ubuntu")
   include_recipe "ubuntu"
 
-  r = resouces(template: "/etc/apt/sources.list")
+  r = resources(template: "/etc/apt/sources.list")
   r.notifies(:install, "apt_package[language-pack-ja]", :immediately)
 
   apt_package "lvm2"
