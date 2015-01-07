@@ -14,8 +14,11 @@ file "/etc/ssh/sshd_config" do
 end
 
 if platform?("ubuntu")
-  apt_package "language-pack-ja" if node[:ubuntu][:locale] == "ja_JP.UTF-8"
   include_recipe "ubuntu"
+
+  r = resouces(template: "/etc/apt/sources.list")
+  r.notifies(:install, "apt_package[language-pack-ja]", :immediately)
+
   apt_package "lvm2"
 
   sudo "ubuntu" do
