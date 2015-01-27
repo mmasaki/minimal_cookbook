@@ -24,6 +24,7 @@ if platform?("ubuntu")
   end
 
   apt_package "lvm2"
+  apt_package "xfsprogs"
 
   sudo "ubuntu" do
     user "ubuntu"
