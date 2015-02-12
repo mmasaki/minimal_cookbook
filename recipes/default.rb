@@ -25,6 +25,7 @@ if platform?("ubuntu")
 
   apt_package "lvm2"
   apt_package "xfsprogs"
+  apt_package "uml-utilities"
 
   sudo "ubuntu" do
     user "ubuntu"
