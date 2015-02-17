@@ -50,6 +50,7 @@ package "iotop"
 package "iftop"
 package "sysv-rc-conf" if platform?("ubuntu")
 package "jq"
+package "curl"
 
 case node[:platform_family]
 when "rhel"
