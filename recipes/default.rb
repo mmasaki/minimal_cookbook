@@ -1,3 +1,4 @@
+include_recipe "hostname"
 include_recipe "users::sysadmins"
 
 sudo "sysadmin" do

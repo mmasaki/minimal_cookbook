@@ -18,3 +18,6 @@ default[:ntp][:servers] = [
   "ntp-tk01.ocn.ad.jp",
   "ntp-tk02.ocn.ad.jp"
 ]
+
+# hostname
+default[:set_fqdn] = node.name
