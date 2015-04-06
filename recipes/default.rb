@@ -52,6 +52,7 @@ package "iftop"
 package "sysv-rc-conf" if platform?("ubuntu")
 package "jq"
 package "curl"
+package "unzip"
 
 case node[:platform_family]
 when "rhel"
