@@ -49,10 +49,14 @@ package "vim"
 package "htop"
 package "iotop"
 package "iftop"
-package "sysv-rc-conf" if platform?("ubuntu")
 package "jq"
 package "curl"
 package "unzip"
+
+if platform?("ubuntu")
+  package "sysv-rc-conf"
+  package "ssh"
+end
 
 case node[:platform_family]
 when "rhel"
