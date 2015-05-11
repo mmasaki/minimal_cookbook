@@ -7,6 +7,6 @@
   sudo service do
     user service
     nopasswd true
-    commands ["/usr/bin/nova-rootwrap /etc/nova/rootwrap.conf *"]
+    commands ["/usr/bin/#{service}-rootwrap /etc/#{service}/rootwrap.conf *"]
   end
 end
